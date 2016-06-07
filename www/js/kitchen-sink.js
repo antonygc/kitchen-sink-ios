@@ -17,7 +17,19 @@ var rightView = myApp.addView('.view-right', {
     dynamicNavbar: true
 });
 
-document.addEventListener("backbutton", onBackKeyDown, false);
+// Wait for device API libraries to load
+//
+function onLoad() {
+    // Register the event listener
+    document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+// device APIs are available
+//
+function onDeviceReady() {
+    // Register the event listener
+    document.addEventListener("backbutton", onBackKeyDown, false);
+}
 
 function onBackKeyDown() {
     
