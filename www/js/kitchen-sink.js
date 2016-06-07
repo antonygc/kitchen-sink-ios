@@ -17,6 +17,15 @@ var rightView = myApp.addView('.view-right', {
     dynamicNavbar: true
 });
 
+document.addEventListener("backbutton", onBackKeyDown, false);
+
+function onBackKeyDown() {
+    
+    // Handle the back button
+    myApp.alert('Hello!');
+    $$('a.back').click();
+}
+
 // Show/hide preloader for remote ajax loaded pages
 // Probably should be removed on a production/local app
 $$(document).on('ajaxStart', function (e) {
