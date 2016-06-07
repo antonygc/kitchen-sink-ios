@@ -17,26 +17,23 @@ var rightView = myApp.addView('.view-right', {
     dynamicNavbar: true
 });
 
-// Wait for device API libraries to load
-//
-function onLoad() {
-    // Register the event listener
-    document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady(){
+    document.addEventListener("backbutton", function(e){
+
+        loc = window.location.pathname.split('/')
+
+        //if(window.location.hash=='#home'){
+        if(loc[loc.length - 1] == 'index.html'){
+            e.preventDefault();
+            navigator.app.exitApp();
+        } else {
+            navigator.app.backHistory()
+        }
+    }, false);
 }
 
-// device APIs are available
-//
-function onDeviceReady() {
-    // Register the event listener
-    document.addEventListener("backbutton", onBackKeyDown, false);
-}
-
-function onBackKeyDown() {
-    
-    // Handle the back button
-    myApp.alert('Hello!');
-    $$('a.back').click();
-}
+document.addEventListener("deviceready", onDeviceReady, false);
 
 // Show/hide preloader for remote ajax loaded pages
 // Probably should be removed on a production/local app
