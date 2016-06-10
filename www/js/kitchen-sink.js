@@ -19,16 +19,23 @@ var rightView = myApp.addView('.view-right', {
 
 
 function onDeviceReady(){
+
+    myApp.alert('onDeviceReady triggered!');
+
     document.addEventListener("backbutton", function(e){
 
-        loc = window.location.pathname.split('/')
+        myApp.alert('backbutton triggered!');
+
+        loc = window.location.pathname.split('/');
+
+        myApp.alert(window.location.pathname);
 
         //if(window.location.hash=='#home'){
         if(loc[loc.length - 1] == 'index.html'){
             e.preventDefault();
             navigator.app.exitApp();
         } else {
-            navigator.app.backHistory()
+            navigator.app.backHistory();
         }
     }, false);
 }
