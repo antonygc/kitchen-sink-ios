@@ -28,13 +28,19 @@ function onDeviceReady(){
 
         loc = window.location.pathname.split('/');
 
-        myApp.alert(window.location.pathname);
+        console.log('pathname: ' + window.location.pathname);
 
         //if(window.location.hash=='#home'){
         if(loc[loc.length - 1] == 'index.html'){
+
+            console.log(1111111111111);
+
             e.preventDefault();
             navigator.app.exitApp();
         } else {
+
+            console.log(22222222222222222);
+
             navigator.app.backHistory();
         }
     }, false);
