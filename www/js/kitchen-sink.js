@@ -20,28 +20,25 @@ var rightView = myApp.addView('.view-right', {
 
 function onDeviceReady(){
 
-    myApp.alert('onDeviceReady triggered!');
-
     document.addEventListener("backbutton", function(e){
 
-        myApp.alert('backbutton triggered!');
+        var view_main = $$('div.view.view-main');
+        console.log(view_main);
 
-        loc = window.location.pathname.split('/');
-
-        console.log('pathname: ' + window.location.pathname);
-
-        //if(window.location.hash=='#home'){
-        if(loc[loc.length - 1] == 'index.html'){
+        if(view_main.attr('data-page') == 'index'){
 
             console.log(1111111111111);
-
             e.preventDefault();
             navigator.app.exitApp();
+
         } else {
 
-            console.log(22222222222222222);
+            //navigator.app.backHistory();
+            console.log(view_main.attr('data-page'));
+            e.preventDefault();
+            back_link = $$('a.back.link');
+            back_link.click();
 
-            navigator.app.backHistory();
         }
     }, false);
 }
